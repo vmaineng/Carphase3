@@ -2,7 +2,9 @@ import React, {useState} from 'react'
 
 
 function VehicleForm() {
-  const [vehicle, setVehicle] = useState("");
+  const [vehicle, setVehicle] = useState('');
+  const [errors, setErrors] = useState(null);
+  const [reservation, setReservation] = useState([])
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -17,17 +19,14 @@ function handleSubmit(e) {
       }),
     })
     .then(r => r.json())
-    .then((vehicle) => {
-      setVehicle(vehicle);
+    .then((parkedcars) => {
+      if (parkedcars.length === 0){
+        setErrors("No reservation for this vehicle")
+      } else {
+      setReservation(parkedcars)};
     })
   };
  
-  // if vehicle.length = 0
-  //   "No reservation"
-    
-
-  // if response.length = 0, print "No reservation", then return setVehicle
-  
 
   return (
     <div className="vehicleform">
@@ -43,7 +42,7 @@ function handleSubmit(e) {
 
         <button type="submit">Check vehicle</button>
       </form>
-      
+      {errors && <p>{errors}</p>}
       </div>
   )
 }
