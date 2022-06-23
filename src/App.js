@@ -5,15 +5,17 @@ import Header from './Header';
 
 
 function App() {
-const [allData, setallData] = useState([])
+const [allData, setallData] = useState([]) //might have to change alldata
 
 useEffect(() => {
-  fetch("http://localhost:9292/parked_cars")
+  fetch("http://localhost:9292/vehicles")
   .then(r => r.json())
   .then(data => {
     setallData(data)
   })
 }, [])
+
+
 
   return (
     

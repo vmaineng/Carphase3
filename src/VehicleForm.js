@@ -4,7 +4,7 @@ import VehicleParked from './VehicleParked'
 function VehicleForm() {
   const [vehicle, setVehicle] = useState('');
   const [errors, setErrors] = useState(null);
-  const [reservation, setReservation] = useState([])
+  const [reservations, setReservation] = useState([])
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -27,6 +27,12 @@ function handleSubmit(e) {
     })
   };
  
+
+//delete vehicle 
+  function handleRemoveItem(id) {
+    const newVehicle = reservations.filter((reservation) => reservation.id !== id);
+    setReservation(newVehicle);
+  }
 
 
   return (
@@ -56,8 +62,10 @@ function handleSubmit(e) {
       </form>
       
       {errors && <p>{errors}</p>}
+
+      <button type="submit">Make new reservation</button>
       
-      <VehicleParked reservations={reservation}/>
+      <VehicleParked reservations={reservations} onRemoveItem={handleRemoveItem}/>
       </div>
   )
 }
