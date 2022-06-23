@@ -42,8 +42,21 @@ function handleSubmit(e) {
         />
 
         <button type="submit">Check vehicle</button>
+        <br></br>
+        <form action="/action_page.php">
+        <label for="arrival">Arrival</label>
+        <input type="datetime-local" id="arrival"/>
+        <button type="submit">Enter</button>
+        </form>
+        <form action="/action_page.php">
+        <label for="depature">Depature</label>
+        <input type="datetime-local" id="depature"/>
+        <button type="submit">Enter</button>
+        </form>
       </form>
+      
       {errors && <p>{errors}</p>}
+      
       <VehicleParked reservations={reservation}/>
       </div>
   )
