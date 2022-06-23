@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import VehicleParked from './VehicleParked'
 
 function VehicleForm() {
   const [vehicle, setVehicle] = useState('');
@@ -28,6 +28,7 @@ function handleSubmit(e) {
   };
  
 
+
   return (
     <div className="vehicleform">
       <h2>Search by Vehicle License Plate</h2>
@@ -43,6 +44,7 @@ function handleSubmit(e) {
         <button type="submit">Check vehicle</button>
       </form>
       {errors && <p>{errors}</p>}
+      <VehicleParked reservations={reservation}/>
       </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import VehicleForm from './VehicleForm';
-import VehicleParked from './VehicleParked'
+
 
 function Header({allData}) {
 
@@ -9,7 +9,7 @@ function Header({allData}) {
     <div>Header
     <VehicleForm />
     
-    <VehicleParked allData={allData}/>
+    
     </div>
   )
 }
