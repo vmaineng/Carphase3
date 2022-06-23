@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 
 
+
 function App() {
 const [allData, setallData] = useState([]) //might have to change alldata
 
@@ -21,7 +22,6 @@ useEffect(() => {
     
     <div className="App">
        <Header allData={allData}/>
-      
     </div>
   );
 }

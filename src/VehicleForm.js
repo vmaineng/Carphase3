@@ -69,31 +69,34 @@ function handleAddReservation(newReservation) {
   }
 
   return (
-    <div className="vehicleform">
-      <h2>Search by Vehicle License Plate</h2>
+    <div className="row g-3">
+      <h2>Reserve your parking space today!</h2>
+      <div class="col-md-6">
       <form onSubmit={handleSubmit}>
         <input 
         type="text" 
         vehicle="vehicle"
+        class="form-control"
+        aria-label="License Plate"
         placeholder="License Plate"
         value={vehicle.license}
         onChange={(e) => setVehicle(e.target.value)}
         />
-
-        <button type="submit">Check vehicle</button>
+       
+        <button type="submit" class="d-grid gap-2 d-md-flex justify-content-md-end">Check vehicle</button>
         <br></br>
-        <form action="/action_page.php">
+        <form action="/action_page.php" class="d-grid gap-2 d-md-flex justify-content-md-end">
         <label for="arrival">Arrival</label>
         <input type="datetime-local" id="arrival"/>
         <button type="submit">Enter</button>
         </form>
-        <form action="/action_page.php">
+        <form action="/action_page.php" class="d-grid gap-2 d-md-flex justify-content-md-end">
         <label for="depature">Depature</label>
         <input type="datetime-local" id="depature"/>
         <button type="submit">Enter</button>
         </form>
       </form>
-      
+      </div>
       {errors && <p>{errors}</p>}
       <form onSubmit={handleNewReservation}>
         <input 
