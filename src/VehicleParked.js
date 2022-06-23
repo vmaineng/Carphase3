@@ -1,8 +1,8 @@
 import React from 'react'
 import ParkedCard from './ParkedCard'
 
-function VehicleParked({reservations, onRemoveItem}) {
-    const parkres = reservations.map(reservation => <ParkedCard key={reservation.id} {...reservation} onRemoveItem={onRemoveItem}/>)
+function VehicleParked({reservations, onRemoveItem, onUpdateReservation}) {
+    const parkres = reservations.map(reservation => <ParkedCard key={reservation.id} {...reservation} onRemoveItem={onRemoveItem} onUpdateReservation={onUpdateReservation}/>)
   return (
     <div>VehicleParked
         <ul className="parkres">{parkres}</ul>

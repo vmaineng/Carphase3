@@ -27,13 +27,30 @@ function handleSubmit(e) {
     })
   };
  
+//add a new vehicle
+function handleAddReservation(newReservation) {
+  const updatedReservationArray = [...reservations, newReservation];
+  setReservation(updatedReservationArray);
+}
+
 
 //delete vehicle 
   function handleRemoveItem(id) {
-    const newVehicle = reservations.filter((reservation) => reservation.id !== id);
-    setReservation(newVehicle);
+    const updatedReservationArray = reservations.filter((reservation) => reservation.id !== id);
+    setReservation(updatedReservationArray);
   }
 
+  //update vehicle
+  function handleUpdateReservation(updatedReservation) {
+    const updatedReservationArray = reservations.map((reservation) => {
+      if (reservation.id === updatedReservation.id) {
+        return updatedReservation;
+      } else {
+        return reservation;
+      }
+    });
+    setReservation(updatedReservationArray);
+  }
 
   return (
     <div className="vehicleform">
@@ -65,7 +82,10 @@ function handleSubmit(e) {
 
       <button type="submit">Make new reservation</button>
       
-      <VehicleParked reservations={reservations} onRemoveItem={handleRemoveItem}/>
+      <VehicleParked 
+          reservations={reservations} 
+          onRemoveItem={handleRemoveItem}
+          onUpdateReservation={handleUpdateReservation}/>
       </div>
   )
 }
