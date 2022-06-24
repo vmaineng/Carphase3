@@ -5,6 +5,7 @@ function VehicleForm() {
   const [vehicle, setVehicle] = useState('');
   const [errors, setErrors] = useState(null);
   const [reservations, setReservation] = useState([])
+  const [newVehicle, setNewVehicle] = useState('')
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -36,7 +37,7 @@ function handleSubmit(e) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          vehicle: vehicle
+          vehicle: newVehicle
         }),
       })
       .then(r => r.json())
@@ -71,8 +72,8 @@ function handleAddReservation(newReservation) {
   return (
     <div className="row g-3">
       <h2>Reserve your parking space today!</h2>
-      <div class="col-md-6">
-      <form onSubmit={handleSubmit}>
+      <div >
+      <form onSubmit={handleSubmit} class="col-md-6">
         <input 
         type="text" 
         vehicle="vehicle"
@@ -83,9 +84,9 @@ function handleAddReservation(newReservation) {
         onChange={(e) => setVehicle(e.target.value)}
         />
        
-        <button type="submit" class="d-grid gap-2 d-md-flex justify-content-md-end">Check vehicle</button>
+        <button type="submit" class="d-grid gap-2 col-6 mx-auto btn-primary">Check vehicle</button>
         <br></br>
-        <form action="/action_page.php" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        {/* <form action="/action_page.php" class="d-grid gap-2 d-md-flex justify-content-md-end">
         <label for="arrival">Arrival</label>
         <input type="datetime-local" id="arrival"/>
         <button type="submit">Enter</button>
@@ -94,7 +95,7 @@ function handleAddReservation(newReservation) {
         <label for="depature">Depature</label>
         <input type="datetime-local" id="depature"/>
         <button type="submit">Enter</button>
-        </form>
+        </form> */}
       </form>
       </div>
       {errors && <p>{errors}</p>}
@@ -103,8 +104,8 @@ function handleAddReservation(newReservation) {
         type="text"
         name="name"
         placeholder="name"
-        value={ vehicle}
-        onChange={(e) => setVehicle(e.target.value)}
+        value={ newVehicle}
+        onChange={(e) => setNewVehicle(e.target.value)}
         />
       <button type="submit">Make new reservation</button>
       </form>

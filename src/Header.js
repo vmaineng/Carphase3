@@ -1,16 +1,16 @@
 import React from 'react'
-import VehicleForm from './VehicleForm';
 
 
-function Header({allData}) {
+
+function Header( ) {
 
 
   return (
     <nav >
     <div class="container-fluit">
-    <span class="navbar-brand mb-0 h2" className="display-1">CarLot</span>
+    <span class="navbar-brand mb-0 h2" className="display-1">Welcome to Nice CarLot</span>
 
-    <VehicleForm />
+   
     
     </div>
     </nav>

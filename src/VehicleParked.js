@@ -4,7 +4,7 @@ import ParkedCard from './ParkedCard'
 function VehicleParked({reservations, onRemoveItem, onUpdateReservation}) {
     const parkres = reservations.map(reservation => <ParkedCard key={reservation.id} {...reservation} onRemoveItem={onRemoveItem} onUpdateReservation={onUpdateReservation}/>)
   return (
-    <div>VehicleParked
+    <div>Current Parking Reservations
         <ul className="parkres">{parkres}</ul>
 
     </div>
