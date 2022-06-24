@@ -1,11 +1,17 @@
 import React, {useState} from 'react'
 import VehicleParked from './VehicleParked'
 
+
 function VehicleForm() {
   const [vehicle, setVehicle] = useState('');
   const [errors, setErrors] = useState(null);
   const [reservations, setReservation] = useState([])
-  const [newVehicle, setNewVehicle] = useState('')
+  //moving
+  //const [newVehicle, setNewVehicle] = useState('')
+  //const [newPrice, setNewPrice] = useState(0)
+  //const [vehicleID, setVehicleID] = useState('')
+  //const [newArrival, setNewArrival] = useState(arrival)
+  //const [newDeparture, setNewDeparture] = useState(departure)
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -28,21 +34,7 @@ function handleSubmit(e) {
     })
   };
 
-  function handleNewReservation(e) {
-    e.preventDefault();
-  
-      fetch("http://localhost:9292/parkedcars", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          vehicle: newVehicle
-        }),
-      })
-      .then(r => r.json())
-      .then((parkedcars) => handleAddReservation(parkedcars))
-      }
+
  
 //add a new vehicle
 function handleAddReservation(newReservation) {
@@ -50,6 +42,27 @@ function handleAddReservation(newReservation) {
   setReservation(updatedReservationArray);
 }
 
+
+//move to New reservation
+// function handleNewReservation(e) {
+//   e.preventDefault();
+
+//     fetch("http://localhost:9292/parkedcars", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         vehicle: newVehicle,
+//         price: newPrice,
+//         // arrival: newArrival,
+//         // departure: newDeparture
+//         //vehicle_id: vehicleID
+//       }),
+//     })
+//     .then(r => r.json())
+//     .then((parkedcars) => handleAddReservation(parkedcars))
+//     } 
 
 //delete vehicle 
   function handleRemoveItem(id) {
@@ -99,21 +112,40 @@ function handleAddReservation(newReservation) {
       </form>
       </div>
       {errors && <p>{errors}</p>}
-      <form onSubmit={handleNewReservation}>
+      {/* <form onSubmit={handleNewReservation}>
         <input 
         type="text"
-        name="name"
-        placeholder="name"
+        name="license plate number"
+        placeholder="license plate number"
         value={ newVehicle}
         onChange={(e) => setNewVehicle(e.target.value)}
         />
-      <button type="submit">Make new reservation</button>
-      </form>
+          <input 
+        type = "number"
+        step= "0.01"
+        placeholder="New price"
+        value ={newPrice}
+        onChange={(e) => setNewPrice(parseFloat(e.target.value))}/>
+        {/* <input
+        type ="date"
+        placeholder="Arrival"
+        value ={newArrival}
+        onChange={(e) => setNewArrival(e.target.value)} />
+        <input
+        type ="date"
+        placeholder="Depature"
+        value ={newDeparture}
+        onChange={(e) => setNewDeparture(e.target.value)} /> */}
+      {/* <button type="submit">Make new reservation</button>
+      </form> */}
+      
+       
 
       <VehicleParked 
           reservations={reservations} 
           onRemoveItem={handleRemoveItem}
-          onUpdateReservation={handleUpdateReservation}/>
+          onUpdateReservation={handleUpdateReservation}
+          onAddItem={handleAddReservation}/>
       </div>
   )
 }
